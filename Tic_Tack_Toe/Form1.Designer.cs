@@ -7,6 +7,16 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        private System.Windows.Forms.Button A1;
+        private System.Windows.Forms.Button A2;
+        private System.Windows.Forms.Button A3;
+        private System.Windows.Forms.Button B1;
+        private System.Windows.Forms.Button B2;
+        private System.Windows.Forms.Button B3;
+        private System.Windows.Forms.Button C1;
+        private System.Windows.Forms.Button C2;
+        private System.Windows.Forms.Button C3;
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -17,6 +27,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -155,15 +166,5 @@
 
         #endregion
 
-        private System.Windows.Forms.Button A1;
-        private System.Windows.Forms.Button A2;
-        private System.Windows.Forms.Button A3;
-        private System.Windows.Forms.Button B1;
-        private System.Windows.Forms.Button B2;
-        private System.Windows.Forms.Button B3;
-        private System.Windows.Forms.Button C1;
-        private System.Windows.Forms.Button C2;
-        private System.Windows.Forms.Button C3;
     }
 }
-
