@@ -37,3 +37,12 @@ C:\Users\SilentAngel\Desktop\GitTicTackToe\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\T
 C:\Users\SilentAngel\Desktop\GitTicTackToe\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.Properties.Resources.resources
 C:\Users\SilentAngel\Desktop\GitTicTackToe\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.csproj.GenerateResource.Cache
 C:\Users\SilentAngel\Desktop\GitTicTackToe\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.GameBoardView.resources
+C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.exe.config
+C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.exe
+C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.pdb
+C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.exe
+C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.pdb
+C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.GameBoardView.resources
+C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.Properties.Resources.resources
+C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.csproj.GenerateResource.Cache
