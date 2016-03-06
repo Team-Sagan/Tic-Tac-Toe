@@ -7,14 +7,13 @@
 
     public class GameBoardModel : IGameBoardModel
     {
-        private readonly string[,] gameBoard = new string[3, 3];
-
         private int counter;
 
         public GameBoardModel(IPlayer firstPlayer, IPlayer secondPlayer)
         {
             this.FirstPlayer = firstPlayer;
             this.SecondPlayer = secondPlayer;
+            this.GameBoard = new string[3, 3];
             this.SetGameBoard();
         }
 
@@ -24,13 +23,15 @@
 
         public event EventHandler MovedPlayer;
 
+        public string[,] GameBoard { get; set; }
+
         public IPlayer FirstPlayer { get; private set; }
 
         public IPlayer SecondPlayer { get; private set; }
 
         public void DrawCheck()
         {
-            if (this.counter < this.gameBoard.Length)
+            if (this.counter < this.GameBoard.Length)
             {
                 return;
             }
@@ -45,20 +46,20 @@
         {
             x = x / size;
             y = y / size;
-            var text = this.gameBoard[x, y];
+            var text = this.GameBoard[x, y];
             if (text == string.Empty)
             {
                 this.counter++;
                 if (this.FirstPlayer.IsOnTurn)
                 {
-                    this.gameBoard[x, y] = this.FirstPlayer.PlayerSymbol;
+                    this.GameBoard[x, y] = this.FirstPlayer.PlayerSymbol;
                     this.FirstPlayer.DeactivateTurn();
                     this.SecondPlayer.ActivateTurn();
                     this.OnMovedPlayer();
                 }
                 else
                 {
-                    this.gameBoard[x, y] = this.SecondPlayer.PlayerSymbol;
+                    this.GameBoard[x, y] = this.SecondPlayer.PlayerSymbol;
                     this.SecondPlayer.DeactivateTurn();
                     this.FirstPlayer.ActivateTurn();
                     this.OnMovedPlayer();
@@ -77,11 +78,11 @@
 
         public void SetGameBoard()
         {
-            for (var x = 0; x < this.gameBoard.GetLength(0); x++)
+            for (var x = 0; x < this.GameBoard.GetLength(0); x++)
             {
-                for (var y = 0; y < this.gameBoard.GetLength(1); y++)
+                for (var y = 0; y < this.GameBoard.GetLength(1); y++)
                 {
-                    this.gameBoard[x, y] = string.Empty;
+                    this.GameBoard[x, y] = string.Empty;
                 }
             }
         }
@@ -107,13 +108,13 @@
 
         private bool CheckForWinner(int firstPlayerCount, int secondPlayerCount)
         {
-            if (firstPlayerCount == this.gameBoard.GetLength(0))
+            if (firstPlayerCount == this.GameBoard.GetLength(0))
             {
                 this.FirstPlayer.SetWinner();
                 return true;
             }
 
-            if (secondPlayerCount == this.gameBoard.GetLength(0))
+            if (secondPlayerCount == this.GameBoard.GetLength(0))
             {
                 this.SecondPlayer.SetWinner();
                 return true;
@@ -124,20 +125,20 @@
 
         private void CheckHorizontally()
         {
-            for (var row = 0; row < this.gameBoard.GetLength(0); row++)
+            for (var row = 0; row < this.GameBoard.GetLength(0); row++)
             {
                 var firstPlayerCount = 1;
                 var secondPlayerCount = 1;
-                for (var col = 0; col < this.gameBoard.GetLength(1) - 1; col++)
+                for (var col = 0; col < this.GameBoard.GetLength(1) - 1; col++)
                 {
-                    if (this.gameBoard[row, col] == this.gameBoard[row, col + 1]
-                        && this.gameBoard[row, col] == this.FirstPlayer.PlayerSymbol)
+                    if (this.GameBoard[row, col] == this.GameBoard[row, col + 1]
+                        && this.GameBoard[row, col] == this.FirstPlayer.PlayerSymbol)
                     {
                         firstPlayerCount++;
                     }
 
-                    if (this.gameBoard[row, col] == this.gameBoard[row, col + 1]
-                        && this.gameBoard[row, col] == this.SecondPlayer.PlayerSymbol)
+                    if (this.GameBoard[row, col] == this.GameBoard[row, col + 1]
+                        && this.GameBoard[row, col] == this.SecondPlayer.PlayerSymbol)
                     {
                         secondPlayerCount++;
                     }
@@ -154,14 +155,14 @@
         {
             var firstPlayerCount = 0;
             var secondPlayerCount = 0;
-            for (var row = 0; row < this.gameBoard.GetLength(0); row++)
+            for (var row = 0; row < this.GameBoard.GetLength(0); row++)
             {
-                if (this.gameBoard[row, row] == this.FirstPlayer.PlayerSymbol)
+                if (this.GameBoard[row, row] == this.FirstPlayer.PlayerSymbol)
                 {
                     firstPlayerCount++;
                 }
 
-                if (this.gameBoard[row, row] == this.SecondPlayer.PlayerSymbol)
+                if (this.GameBoard[row, row] == this.SecondPlayer.PlayerSymbol)
                 {
                     secondPlayerCount++;
                 }
@@ -174,14 +175,14 @@
         {
             var firstPlayerCount = 0;
             var secondPlayerCount = 0;
-            for (var row = 0; row < this.gameBoard.GetLength(0); row++)
+            for (var row = 0; row < this.GameBoard.GetLength(0); row++)
             {
-                if (this.gameBoard[row, this.gameBoard.GetLength(1) - 1 - row] == this.FirstPlayer.PlayerSymbol)
+                if (this.GameBoard[row, this.GameBoard.GetLength(1) - 1 - row] == this.FirstPlayer.PlayerSymbol)
                 {
                     firstPlayerCount++;
                 }
 
-                if (this.gameBoard[row, this.gameBoard.GetLength(1) - 1 - row] == this.SecondPlayer.PlayerSymbol)
+                if (this.GameBoard[row, this.GameBoard.GetLength(1) - 1 - row] == this.SecondPlayer.PlayerSymbol)
                 {
                     secondPlayerCount++;
                 }
@@ -192,20 +193,20 @@
 
         private void CheckVertically()
         {
-            for (var col = 0; col < this.gameBoard.GetLength(1); col++)
+            for (var col = 0; col < this.GameBoard.GetLength(1); col++)
             {
                 var firstPlayerCount = 1;
                 var secondPlayerCount = 1;
-                for (var row = 0; row < this.gameBoard.GetLength(0) - 1; row++)
+                for (var row = 0; row < this.GameBoard.GetLength(0) - 1; row++)
                 {
-                    if (this.gameBoard[row, col] == this.gameBoard[row + 1, col]
-                        && this.gameBoard[row, col] == this.FirstPlayer.PlayerSymbol)
+                    if (this.GameBoard[row, col] == this.GameBoard[row + 1, col]
+                        && this.GameBoard[row, col] == this.FirstPlayer.PlayerSymbol)
                     {
                         firstPlayerCount++;
                     }
 
-                    if (this.gameBoard[row, col] == this.gameBoard[row + 1, col]
-                        && this.gameBoard[row, col] == this.SecondPlayer.PlayerSymbol)
+                    if (this.GameBoard[row, col] == this.GameBoard[row + 1, col]
+                        && this.GameBoard[row, col] == this.SecondPlayer.PlayerSymbol)
                     {
                         secondPlayerCount++;
                     }
@@ -244,11 +245,11 @@
 
         private void SetGameBoardToDefaultValues()
         {
-            for (var row = 0; row < this.gameBoard.GetLength(0); row++)
+            for (var row = 0; row < this.GameBoard.GetLength(0); row++)
             {
-                for (var col = 0; col < this.gameBoard.GetLength(1); col++)
+                for (var col = 0; col < this.GameBoard.GetLength(1); col++)
                 {
-                    this.gameBoard[row, col] = string.Empty;
+                    this.GameBoard[row, col] = string.Empty;
                 }
             }
         }

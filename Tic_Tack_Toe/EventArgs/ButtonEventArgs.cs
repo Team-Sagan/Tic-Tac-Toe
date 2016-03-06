@@ -10,6 +10,7 @@
             this.X = x;
             this.Y = y;
         }
+
         public int Size { get; set; }
 
         public int X { get; set; }

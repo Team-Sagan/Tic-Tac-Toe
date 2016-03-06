@@ -5,26 +5,29 @@
 
     using Interfaces;
 
+    using Tic_Tack_Toe.Models;
+
     /// <summary>
     /// Main logic for artificial intelligence
     /// </summary>
-    public class Computer : IArtificialIntelligence
+    public class Computer : Player, IArtificialIntelligence
     {
+        private const string ComputerName = "Computer";
+        private readonly string computerSymbol;
+        private readonly string playerSymbol;
+        private readonly string emptySpace = string.Empty;
+        private readonly int maxScore = 3;
         private string[,] board = new string[3, 3];
-        private int maxScore = 3;
         private int turnCount = -1;
-        private int maxTurns = 9;
-        private string aiSymbol = " X ";
-        private string playerSymbol = " O ";
-        private string emptySpace = " * ";
 
-        /// <summary>
-        /// Returns the computer move in a game of tic tac toe.
-        /// </summary>
-        /// <param name="ticTacToe">Two dimensional 3 by 3 string array showing the current state of the game 
-        /// where human player is “ O ”, computer is “ X ” and empty space is “ * ”.</param>
-        /// <returns>Returns an array with count 2 that holds on index 0 the row and on index 1 the column of 
-        /// the computer move in a 3 by 3 string matrix of the game.</returns>
+        public Computer(string computerSymbol, string playerSymbol)
+            : base(ComputerName, playerSymbol)
+        {
+            this.computerSymbol = computerSymbol;
+            this.playerSymbol = playerSymbol;
+            this.PlayerSymbol = computerSymbol;
+        }
+        
         public int[] AiMove(string[,] ticTacToe)
         {
             string[,] gameboard = this.Clone(ticTacToe);
@@ -32,7 +35,6 @@
             int[] move = new int[2];
             int moveResult = int.MinValue;
             int currentMoveResult = int.MinValue;
-            int enemyResult = int.MinValue;
             bool firstLevelAiResult = false;
             bool firstLevelPlayerResult = false;
 
@@ -46,7 +48,7 @@
                     }
 
                     this.board = this.Clone(gameboard);
-                    firstLevelAiResult = this.FirstLevelCheck(row, col, this.aiSymbol);
+                    firstLevelAiResult = this.FirstLevelCheck(row, col, this.computerSymbol);
 
                     this.board = this.Clone(gameboard);
                     firstLevelPlayerResult = this.FirstLevelCheck(row, col, this.playerSymbol);
@@ -94,7 +96,7 @@
             this.turnCount++;
             int moveResult = 0;
             int nextMoveResult = 0;
-            string player = this.aiSymbol;
+            string player = this.computerSymbol;
             if (this.turnCount % 2 != 0)
             {
                 player = this.playerSymbol;
@@ -103,7 +105,7 @@
             this.board[row, col] = player;
             moveResult = this.CheckCurrentMoveResult(player);
 
-            if (moveResult == this.maxScore && player == this.aiSymbol)
+            if (moveResult == this.maxScore && player == this.computerSymbol)
             {
                 return moveResult;
             }

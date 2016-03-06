@@ -53,7 +53,7 @@
     <Compile Include="Interfaces\IGameRoomView.cs" />
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\GameRoomModel.cs" />
-    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\HumanPlayer.cs" />
     <Compile Include="GameRoomView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="Interfaces\IArtificialIntelligence.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Presenters\GameRoomPresenter.cs" />
     <Compile Include="TicTackToeMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Windows.Forms;
 
+    using Tic_Tack_Toe.Character;
     using Tic_Tack_Toe.EventArgs;
     using Tic_Tack_Toe.Interfaces;
     using Tic_Tack_Toe.Models;
@@ -11,15 +12,19 @@
 
     public partial class GameBoardView : Form, IGameBoardView
     {
+        private readonly GameBoardModel gameBoardModel;
+        private readonly IPlayer firstPlayer;
+        private readonly Computer secondPlayer;
         private IGameBoardPresenter presenter;
 
         public GameBoardView()
         {
             this.InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.presenter = new GameBoardPresenter(
-                this, 
-                new GameBoardModel(new Player("Koko", "X") { IsOnTurn = true }, new Player("Boko", "O")));
+            this.firstPlayer = new HumanPlayer("Koko", "X") { IsOnTurn = true };
+            this.secondPlayer = new Computer("O", "X");
+            this.gameBoardModel = new GameBoardModel(this.firstPlayer, this.secondPlayer);
+            this.presenter = new GameBoardPresenter(this, this.gameBoardModel);
         }
 
         public event EventHandler CheckForDraw;
@@ -66,6 +71,18 @@
                 this.OnCheckForWinner();
                 this.OnCheckForDraw();
                 this.btnFocused.Focus();
+
+                if (this.secondPlayer.IsOnTurn)
+                {
+                    var computerMove = this.secondPlayer.AiMove(this.gameBoardModel.GameBoard);
+                    int computerX = computerMove[0] * button.Size.Height; ////col
+                    int computerY = computerMove[1] * button.Size.Height; ////row
+                    this.ShowComputerMove(computerX, computerY);
+                    this.OnPlayerMove(new ButtonEventArgs(button.Size.Height, computerX, computerY));
+                    this.OnCheckForWinner();
+                    this.OnCheckForDraw();
+                    this.btnFocused.Focus();
+                }
             }
         }
 
@@ -90,6 +107,55 @@
             if (this.PlayerMove != null)
             {
                 this.PlayerMove(this, e);
+            }
+        }
+
+        private void ShowComputerMove(int computerX, int computerY)
+        {
+            if (computerY == 0)
+            {
+                switch (computerX)
+                {
+                    case 0:
+                        this.A1.Text = this.secondPlayer.PlayerSymbol;
+                        break;
+                    case 100:
+                        this.A2.Text = this.secondPlayer.PlayerSymbol;
+                        break;
+                    case 200:
+                        this.A3.Text = this.secondPlayer.PlayerSymbol;
+                        break;
+                }
+            }
+            else if (computerY == 100)
+            {
+                switch (computerX)
+                {
+                    case 0:
+                        this.B1.Text = this.secondPlayer.PlayerSymbol;
+                        break;
+                    case 100:
+                        this.B2.Text = this.secondPlayer.PlayerSymbol;
+                        break;
+                    case 200:
+                        this.B3.Text = this.secondPlayer.PlayerSymbol;
+                        break;
+                }
+            }
+            else
+            {
+                switch (computerX)
+                {
+                    case 0:
+                        this.C1.Text = this.secondPlayer.PlayerSymbol;
+                        break;
+                    case 100:
+                        this.C2.Text = this.secondPlayer.PlayerSymbol;
+                        break;
+                    case 200:
+                        this.C3.Text = this.secondPlayer.PlayerSymbol;
+                        break;
+                }
             }
         }
     }

@@ -2,9 +2,9 @@
 {
     using Tic_Tack_Toe.Interfaces;
 
-    public class Player : IPlayer
+    public abstract class Player : IPlayer
     {
-        public Player(string playerName, string playerSymbol)
+        protected Player(string playerName, string playerSymbol)
         {
             this.PlayerName = playerName;
             this.PlayerSymbol = playerSymbol;
@@ -18,7 +18,7 @@
 
         public string PlayerName { get; private set; }
 
-        public string PlayerSymbol { get; private set; }
+        public string PlayerSymbol { get; protected set; }
 
         public void ActivateTurn()
         {
