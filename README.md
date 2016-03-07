@@ -1,2 +1,2 @@
-# Tic-Tack-Toe
-Version of the popular game "Tick-tack-toe"
+# Tic-Tac-Toe
+Version of the popular game "Tick-tac-toe"
