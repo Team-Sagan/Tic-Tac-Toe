@@ -18,7 +18,7 @@
             this.SetUp();
         }
 
-        public void PlayerMove(object sender, ButtonEventArgs eventArgs)
+        public virtual void PlayerMove(object sender, ButtonEventArgs eventArgs)
         {
             this.model.PlayerMoved(eventArgs.Size, eventArgs.X, eventArgs.Y);
         }
@@ -51,11 +51,11 @@
             }
         }
 
-        private void SetUp()
+        protected void SetUp()
         {
             this.view.PlayerMove += this.PlayerMove;
-            this.view.CheckForWinner += this.CheckForWinner;
-            this.view.CheckForDraw += this.CheckForDraw;
+            this.view.PlayerIconSet += this.CheckForWinner;
+            this.view.PlayerIconSet += this.CheckForDraw;
             this.model.GameDraw += this.DrawGame;
             this.model.GameWon += this.WonGame;
             this.model.MovedPlayer += this.MovedPlayer;

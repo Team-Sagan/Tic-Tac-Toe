@@ -46,3 +46,16 @@ C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.csp
 C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.GameBoardView.resources
 C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.Properties.Resources.resources
 C:\Users\Admin\Desktop\Game\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.csproj.GenerateResource.Cache
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.exe.config
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.exe
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.pdb
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.exe.config
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.exe
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.pdb
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.csprojResolveAssemblyReference.cache
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.GameBoardView.resources
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.Properties.Resources.resources
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.SinglePlayerGameBoardView.resources
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.csproj.GenerateResource.Cache
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.exe
+C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.pdb

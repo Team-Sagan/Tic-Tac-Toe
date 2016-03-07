@@ -6,9 +6,7 @@
 
     public interface IGameBoardView
     {
-        event EventHandler CheckForDraw;
-
-        event EventHandler CheckForWinner;
+        event EventHandler PlayerIconSet;
 
         event EventHandler<ButtonEventArgs> PlayerMove;
 

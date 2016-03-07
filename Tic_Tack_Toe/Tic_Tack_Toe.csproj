@@ -47,27 +47,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventArgs\ButtonEventArgs.cs" />
+    <Compile Include="EventArgs\ComputerTurnEventArgs.cs" />
     <Compile Include="EventArgs\GameWonEventArgs.cs" />
     <Compile Include="Interfaces\IGameRoomModel.cs" />
     <Compile Include="Interfaces\IGameRoomPresenter.cs" />
     <Compile Include="Interfaces\IGameRoomView.cs" />
+    <Compile Include="Interfaces\ISinglePlayerGameBoardModel.cs" />
+    <Compile Include="Interfaces\ISinglePlayerGameBoardView.cs" />
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\GameRoomModel.cs" />
     <Compile Include="Models\HumanPlayer.cs" />
-    <Compile Include="GameRoomView.cs">
+    <Compile Include="GameBoardView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GameRoomView.Designer.cs">
-      <DependentUpon>GameRoomView.cs</DependentUpon>
+    <Compile Include="GameBoardView.Designer.cs">
+      <DependentUpon>GameBoardView.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IArtificialIntelligence.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Models\Player.cs" />
-    <Compile Include="Presenters\GameRoomPresenter.cs" />
+    <Compile Include="Models\SinglePlayerGameRoomModel.cs" />
+    <Compile Include="Presenters\GameBoardPresenter.cs" />
+    <Compile Include="Presenters\SinglePlayerGameBoardPresenter.cs" />
+    <Compile Include="SinglePlayerGameBoardView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SinglePlayerGameBoardView.Designer.cs">
+      <DependentUpon>SinglePlayerGameBoardView.cs</DependentUpon>
+    </Compile>
     <Compile Include="TicTackToeMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GameRoomView.resx">
-      <DependentUpon>GameRoomView.cs</DependentUpon>
+    <EmbeddedResource Include="GameBoardView.resx">
+      <DependentUpon>GameBoardView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +89,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SinglePlayerGameBoardView.resx">
+      <DependentUpon>SinglePlayerGameBoardView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

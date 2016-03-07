@@ -7,13 +7,14 @@
 
     public class GameBoardModel : IGameBoardModel
     {
-        private int counter;
+        protected int Counter;
+
+        protected readonly string[,] GameBoard = new string[3, 3];
 
         public GameBoardModel(IPlayer firstPlayer, IPlayer secondPlayer)
         {
             this.FirstPlayer = firstPlayer;
             this.SecondPlayer = secondPlayer;
-            this.GameBoard = new string[3, 3];
             this.SetGameBoard();
         }
 
@@ -23,15 +24,13 @@
 
         public event EventHandler MovedPlayer;
 
-        public string[,] GameBoard { get; set; }
-
         public IPlayer FirstPlayer { get; private set; }
 
         public IPlayer SecondPlayer { get; private set; }
 
         public void DrawCheck()
         {
-            if (this.counter < this.GameBoard.Length)
+            if (this.Counter < this.GameBoard.Length)
             {
                 return;
             }
@@ -49,7 +48,7 @@
             var text = this.GameBoard[x, y];
             if (text == string.Empty)
             {
-                this.counter++;
+                this.Counter++;
                 if (this.FirstPlayer.IsOnTurn)
                 {
                     this.GameBoard[x, y] = this.FirstPlayer.PlayerSymbol;
@@ -70,7 +69,7 @@
         public void ResetGameBoard()
         {
             this.SetGameBoardToDefaultValues();
-            this.counter = 0;
+            this.Counter = 0;
             this.FirstPlayer.ResetPlayer();
             this.FirstPlayer.ActivateTurn();
             this.SecondPlayer.ResetPlayer();
@@ -89,7 +88,7 @@
 
         public void WinCheck()
         {
-            if (this.counter >= 5)
+            if (this.Counter >= 5)
             {
                 this.CheckHorizontally();
                 this.CheckVertically();
@@ -103,6 +102,14 @@
                 {
                     this.OnGameWon(this.SecondPlayer);
                 }
+            }
+        }
+
+        protected void OnMovedPlayer()
+        {
+            if (this.MovedPlayer != null)
+            {
+                this.MovedPlayer(this, EventArgs.Empty);
             }
         }
 
@@ -232,14 +239,6 @@
             if (this.GameWon != null)
             {
                 this.GameWon(this, new GameWonEventArgs(winner));
-            }
-        }
-
-        private void OnMovedPlayer()
-        {
-            if (this.MovedPlayer != null)
-            {
-                this.MovedPlayer(this, EventArgs.Empty);
             }
         }
 
