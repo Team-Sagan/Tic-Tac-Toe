@@ -14,7 +14,7 @@
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new GameBoardView());
-            Application.Run(new SinglePlayerGameBoardView());
+            Application.Run(new GameEntry());
 
         }
     }
