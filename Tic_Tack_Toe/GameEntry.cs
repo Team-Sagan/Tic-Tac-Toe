@@ -21,14 +21,18 @@
 
         private void button1_Click(object sender, System.EventArgs e)
         {
+            this.Hide();
             var singlePlayerGame = new SinglePlayerGameBoardView();
-            singlePlayerGame.Show();
+            singlePlayerGame.ShowDialog();
+            this.Close();
         }
 
         private void button2_Click(object sender, System.EventArgs e)
         {
+            this.Hide();
             var customScreen = new CustomisationScreen();
-            customScreen.Show();
+            customScreen.ShowDialog();
+            this.Close();
             //var multyPlayerGame = new GameBoardView();
 
             //multyPlayerGame.Show();

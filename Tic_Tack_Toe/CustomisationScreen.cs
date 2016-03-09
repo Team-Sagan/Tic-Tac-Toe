@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Tic_Tack_Toe
@@ -30,11 +23,11 @@ namespace Tic_Tack_Toe
             if (textBox1.Text.Equals(string.Empty) || textBox2.Text.Equals(string.Empty))
             {
                 MessageBox.Show("Please enter a name.", "Missing names", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
-
-         var multyPlayer = new GameBoardView();
-         multyPlayer.Show();
+            this.Hide();
+            var multyPlayer = new GameBoardView();
+            multyPlayer.ShowDialog();
+            this.Close();
         }
 
         private void textBox1_TextChanged(object sender, System.EventArgs e)
@@ -59,10 +52,10 @@ namespace Tic_Tack_Toe
 
         private void button3_Click(object sender, System.EventArgs e)
         {
-            var menu = new GameEntry();
-            menu.Show();
-        
             this.Hide();
+            var menu = new GameEntry();
+            menu.ShowDialog();
+            this.Close();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)

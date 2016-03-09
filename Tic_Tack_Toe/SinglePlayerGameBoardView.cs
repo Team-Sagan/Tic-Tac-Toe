@@ -104,5 +104,21 @@
                 this.PlayerMove(this, e);
             }
         }
+
+        private void button3_Click(object sender, System.EventArgs e)
+        {
+            var message = MessageBox.Show("If you leave you will loose your progress!", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (message == DialogResult.OK)
+            {
+                var gameEntry = new GameEntry();
+                gameEntry.ShowDialog();
+                this.Close();
+            }
+        }
+
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
