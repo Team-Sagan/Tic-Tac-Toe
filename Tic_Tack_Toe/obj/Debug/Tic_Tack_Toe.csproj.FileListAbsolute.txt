@@ -59,3 +59,6 @@ C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.S
 C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.csproj.GenerateResource.Cache
 C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.exe
 C:\Users\SilentAngel\Desktop\Tic-Tack-Toe1\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.pdb
+C:\Users\Alex\Documents\GitHub\Tick-Tack-Toe\Tic-Tac-Toe\Tic_Tack_Toe\bin\Debug\Tic_Tack_Toe.exe.config
+C:\Users\Alex\Documents\GitHub\Tick-Tack-Toe\Tic-Tac-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.exe
+C:\Users\Alex\Documents\GitHub\Tick-Tack-Toe\Tic-Tac-Toe\Tic_Tack_Toe\obj\Debug\Tic_Tack_Toe.pdb
