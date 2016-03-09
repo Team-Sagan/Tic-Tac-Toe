@@ -20,13 +20,16 @@
 
         public int[] ComputerMove()
         {
-
             string[,] gameboard = this.Clone(this.GameBoard);
 
             int[] move = new int[2];
             int moveResult = int.MinValue;
-            bool firstLevelAiResult = false;
-            bool firstLevelPlayerResult = false;
+
+            int[] winMove = new int[2];
+            bool computerWins = false;
+
+            int[] stopPlayerWinMove = new int[2];
+            bool stopPlayerWin = false;
 
             for (int row = 0; row < gameboard.GetLength(0); row++)
             {
@@ -38,16 +41,21 @@
                     }
 
                     this.board = this.Clone(gameboard);
-                    firstLevelAiResult = this.FirstLevelCheck(row, col, this.SecondPlayer.PlayerSymbol);
+                    var firstLevelAiResult = this.FirstLevelCheck(row, col, this.SecondPlayer.PlayerSymbol);
+                    if (firstLevelAiResult)
+                    {
+                        winMove[0] = row;
+                        winMove[1] = col;
+                        computerWins = true;
+                    }
 
                     this.board = this.Clone(gameboard);
-                    firstLevelPlayerResult = this.FirstLevelCheck(row, col, this.FirstPlayer.PlayerSymbol);
-
-                    if (firstLevelAiResult || firstLevelPlayerResult)
+                    var firstLevelPlayerResult = this.FirstLevelCheck(row, col, this.FirstPlayer.PlayerSymbol);
+                    if (firstLevelPlayerResult)
                     {
-                        move[0] = row;
-                        move[1] = col;
-                        break;
+                        stopPlayerWinMove[0] = row;
+                        stopPlayerWinMove[1] = col;
+                        stopPlayerWin = true;
                     }
 
                     this.board = this.Clone(gameboard);
@@ -60,11 +68,16 @@
                         move[1] = col;
                     }
                 }
+            }
 
-                if (firstLevelAiResult || firstLevelPlayerResult)
-                {
-                    break;
-                }
+            if (computerWins)
+            {
+                return winMove;
+            }
+
+            if (stopPlayerWin)
+            {
+                return stopPlayerWinMove;
             }
 
             return move;
