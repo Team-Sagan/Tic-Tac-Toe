@@ -5,7 +5,7 @@
 
     using Tic_Tack_Toe.Interfaces;
 
-    public class SinglePlayerGameRoomModel : GameBoardModel, ISinglePlayerGameBoardModel
+    public class SinglePlayerGameRoomModel : MultiPlayerGameBoardModel, ISinglePlayerGameBoardModel
     {
         private const int MaxScore = 3;
 

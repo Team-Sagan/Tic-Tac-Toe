@@ -4,7 +4,7 @@
 
     using Tic_Tack_Toe.EventArgs;
 
-    public interface ISinglePlayerGameBoardView : IGameBoardView
+    public interface ISinglePlayerGameBoardView : IMultiPlayerGameBoardView
     {
         event EventHandler<ComputerTurnEventArgs> ComputerTurn;
 

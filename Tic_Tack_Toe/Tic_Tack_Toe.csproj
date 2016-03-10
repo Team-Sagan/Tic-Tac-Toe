@@ -49,18 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomisationScreen.cs">
+    <Compile Include="Exceptions\InvalidPlayerNameException.cs" />
+    <Compile Include="Exceptions\InvalidPlayerSymbolException.cs" />
+    <Compile Include="Interfaces\IMultiPlayerUserSetUpPresenter.cs" />
+    <Compile Include="MultiPlayerUserSetUpView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomisationScreen.Designer.cs">
-      <DependentUpon>CustomisationScreen.cs</DependentUpon>
+    <Compile Include="MultiPlayerUserSetUpView.Designer.cs">
+      <DependentUpon>MultiPlayerUserSetUpView.cs</DependentUpon>
     </Compile>
     <Compile Include="EventArgs\ButtonEventArgs.cs" />
     <Compile Include="EventArgs\ComputerTurnEventArgs.cs" />
     <Compile Include="EventArgs\GameWonEventArgs.cs" />
-    <Compile Include="Interfaces\IGameRoomModel.cs" />
-    <Compile Include="Interfaces\IGameRoomPresenter.cs" />
-    <Compile Include="Interfaces\IGameRoomView.cs" />
+    <Compile Include="Interfaces\IMultiPlayerGameRoomModel.cs" />
+    <Compile Include="Interfaces\IMultiPlayerGameRoomPresenter.cs" />
+    <Compile Include="Interfaces\IMultiPlayerGameRoomView.cs" />
+    <Compile Include="Interfaces\IMultiPlayerUserSetUpModel.cs" />
+    <Compile Include="Interfaces\IMultiPlayerUserSetUpView.cs" />
     <Compile Include="Interfaces\ISinglePlayerGameBoardModel.cs" />
     <Compile Include="Interfaces\ISinglePlayerGameBoardView.cs" />
     <Compile Include="GameEntry.cs">
@@ -70,20 +75,23 @@
       <DependentUpon>GameEntry.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Computer.cs" />
-    <Compile Include="Models\GameRoomModel.cs" />
+    <Compile Include="Models\MultiPlayerGameRoomModel.cs" />
     <Compile Include="Models\HumanPlayer.cs" />
-    <Compile Include="GameBoardView.cs">
+    <Compile Include="Models\MultiPlayerUserSetUpModel.cs" />
+    <Compile Include="MultiPlayerGameBoardView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GameBoardView.Designer.cs">
-      <DependentUpon>GameBoardView.cs</DependentUpon>
+    <Compile Include="MultiPlayerGameBoardView.Designer.cs">
+      <DependentUpon>MultiPlayerGameBoardView.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IArtificialIntelligence.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\SinglePlayerGameRoomModel.cs" />
-    <Compile Include="Presenters\GameBoardPresenter.cs" />
+    <Compile Include="Presenters\MultiPlayerGameBoardPresenter.cs" />
+    <Compile Include="Presenters\MultiPlayerUserSetUpPresenter.cs" />
     <Compile Include="Presenters\SinglePlayerGameBoardPresenter.cs" />
+    <Compile Include="Resources\Messages.cs" />
     <Compile Include="SinglePlayerGameBoardView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,11 +100,11 @@
     </Compile>
     <Compile Include="TicTackToeMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CustomisationScreen.resx">
-      <DependentUpon>CustomisationScreen.cs</DependentUpon>
+    <EmbeddedResource Include="MultiPlayerUserSetUpView.resx">
+      <DependentUpon>MultiPlayerUserSetUpView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameBoardView.resx">
-      <DependentUpon>GameBoardView.cs</DependentUpon>
+    <EmbeddedResource Include="MultiPlayerGameBoardView.resx">
+      <DependentUpon>MultiPlayerGameBoardView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameEntry.resx">
       <DependentUpon>GameEntry.cs</DependentUpon>
@@ -109,6 +117,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SinglePlayerGameBoardView.resx">
       <DependentUpon>SinglePlayerGameBoardView.cs</DependentUpon>
@@ -127,6 +136,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\bg-ttt1.jpg" />
+    <None Include="Resources\bg_ttt.jpg" />
     <Content Include="Resources\unnamed.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

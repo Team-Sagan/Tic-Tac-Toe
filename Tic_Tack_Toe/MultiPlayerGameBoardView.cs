@@ -2,7 +2,6 @@
 {
     using System;
     using System.Linq;
-    using System.Threading;
     using System.Windows.Forms;
 
     using Tic_Tack_Toe.EventArgs;
@@ -11,21 +10,20 @@
     using Tic_Tack_Toe.Presenters;
     using Tic_Tack_Toe.Resources;
 
-    public partial class SinglePlayerGameBoardView : Form, ISinglePlayerGameBoardView
+    public partial class MultiPlayerGameBoardView : Form, IMultiPlayerGameBoardView
     {
         private IMultiPlayerGameBoardPresenter presenter;
 
-        public SinglePlayerGameBoardView()
+        public MultiPlayerGameBoardView(IPlayer firstPlayer, IPlayer secondPlayer)
         {
             this.InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            var firstPlayer = new HumanPlayer("You", "X") { IsOnTurn = true };
-            var secondPlayer = new Computer("O");
-            var gameBoardModel = new SinglePlayerGameRoomModel(firstPlayer, secondPlayer);
-            this.presenter = new SinglePlayerGameBoardPresenter(this, gameBoardModel);
-        }
 
-        public event EventHandler<ComputerTurnEventArgs> ComputerTurn;
+            firstPlayer.ActivateTurn();
+
+            var gameBoardModel = new MultiPlayerGameBoardModel(firstPlayer, secondPlayer);
+            this.presenter = new MultiPlayerGameBoardPresenter(this, gameBoardModel);
+        }
 
         public event EventHandler PlayerIconSet;
 
@@ -33,22 +31,14 @@
 
         public IPlayer Player { get; set; }
 
-        public void DisplayComputerTurn(int xCoordinate, int yCoordinate)
-        {
-            foreach (var btn in
-                this.Controls.Cast<Button>()
-                    .Where(btn => btn.Location.X == xCoordinate && btn.Location.Y == yCoordinate))
-            {
-                btn.Text = this.Player.PlayerSymbol;
-            }
-        }
-
         public void ResetGameBoard()
         {
-            foreach (
-                var button in
-                    this.Controls.Cast<Button>()
-                        .Where(button => button.Text != Messages.MainMenu && button.Text != Messages.Exit))
+            foreach (var button in
+                this.Controls.Cast<Button>()
+                    .Where(
+                        button =>
+                        button.Text != Messages.MainMenu && button.Text != Messages.Exit && button.Text != Messages.Back)
+                )
             {
                 button.Text = string.Empty;
             }
@@ -65,10 +55,28 @@
 
         void IMultiPlayerGameBoardView.GameWon(IPlayer winner)
         {
-            var result = MessageBox.Show(string.Format("{0} win!", winner.PlayerName), Messages.Congratulations);
+            var result = MessageBox.Show(
+                string.Format(Messages.WinMessage, winner.PlayerName), 
+                Messages.Congratulations);
             if (result == DialogResult.OK)
             {
                 this.ResetGameBoard();
+            }
+        }
+
+        private void ButtonBackClicked(object sender, System.EventArgs e)
+        {
+            var message = MessageBox.Show(
+                Messages.PossibleProgressLoss, 
+                Messages.Information, 
+                MessageBoxButtons.OKCancel, 
+                MessageBoxIcon.Exclamation);
+            if (message == DialogResult.OK)
+            {
+                this.Hide();
+                var customScreen = new MultiPlayerUserSetUpView();
+                customScreen.ShowDialog();
+                this.Close();
             }
         }
 
@@ -79,8 +87,6 @@
             {
                 this.OnPlayerMove(new ButtonEventArgs(button.Size.Height, button.Location.X, button.Location.Y));
                 button.Text = this.Player.PlayerSymbol;
-                this.OnPlayerIconSet();
-                this.OnComputerTurn(new ComputerTurnEventArgs(button.Size.Height));
                 this.OnPlayerIconSet();
                 this.btnFocused.Focus();
             }
@@ -100,17 +106,10 @@
                 MessageBoxIcon.Exclamation);
             if (message == DialogResult.OK)
             {
+                this.Hide();
                 var gameEntry = new GameEntry();
                 gameEntry.ShowDialog();
                 this.Close();
-            }
-        }
-
-        private void OnComputerTurn(ComputerTurnEventArgs sizeEventArgs)
-        {
-            if (this.ComputerTurn != null)
-            {
-                this.ComputerTurn(this, sizeEventArgs);
             }
         }
 

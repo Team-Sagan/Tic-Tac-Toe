@@ -6,20 +6,16 @@
     {
         public GameEntry()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        private void button3_Click(object sender, System.EventArgs e)
+        private void ButtonExitClicked(object sender, System.EventArgs e)
         {
             this.Close();
         }
 
-        private void Menu_Load(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, System.EventArgs e)
+        private void ButtonVsComputerClicked(object sender, System.EventArgs e)
         {
             this.Hide();
             var singlePlayerGame = new SinglePlayerGameBoardView();
@@ -27,15 +23,12 @@
             this.Close();
         }
 
-        private void button2_Click(object sender, System.EventArgs e)
+        private void ButtonVsPlayerClicked(object sender, System.EventArgs e)
         {
             this.Hide();
-            var customScreen = new CustomisationScreen();
+            var customScreen = new MultiPlayerUserSetUpView();
             customScreen.ShowDialog();
             this.Close();
-            //var multyPlayerGame = new GameBoardView();
-
-            //multyPlayerGame.Show();
         }
     }
 }

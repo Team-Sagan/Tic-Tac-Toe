@@ -1,9 +1,11 @@
 ﻿namespace Tic_Tack_Toe.Presenters
 {
+    using System.Threading;
+
     using Tic_Tack_Toe.EventArgs;
     using Tic_Tack_Toe.Interfaces;
 
-    public class SinglePlayerGameBoardPresenter : GameBoardPresenter
+    public class SinglePlayerGameBoardPresenter : MultiPlayerGameBoardPresenter
     {
         private readonly ISinglePlayerGameBoardModel model;
 
